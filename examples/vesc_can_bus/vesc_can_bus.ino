@@ -8,10 +8,8 @@ long last_print_data;
 
 
 void setup()
-{
-
+{    
     Serial.begin(115200); // Wired comms from USB port
-
     can.initialize();
 
 }
