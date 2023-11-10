@@ -2,7 +2,6 @@
 #include <mcp2515.h>
 
 
-
 MCP2515 mcp2515(10);
 
 
@@ -48,7 +47,8 @@ void loop() {
       Serial.print(" ");
     }
     */
-    Serial.print("ante agaph mou");
+    mcp2515.readMessage(&canMsg);
+    //Serial.println(canMsg.can_id, HEX); // print ID
     } 
     int64_t tempMosfet = ((int64_t)canMsg.data[0] << 8) | ((int64_t)canMsg.data[1]);
     Serial.print((int32_t)tempMosfet*0.1);
