@@ -33,18 +33,18 @@ void CAN::spin() {
     WHvals[3] = rxBuf[0];
     WattHours = *(long *)WHvals;
   }
-  if (rxId == 0x8000100A) { //
+  if (rxId == 0x80001073) { //
     tempFET = process_data_frame_vesc('F', rxBuf[0], rxBuf[1]);
     tempMotor = process_data_frame_vesc('T', rxBuf[2], rxBuf[3]);
     avgInputCurrent = process_data_frame_vesc('I', rxBuf[4], rxBuf[5]);
   }
-  if (rxId == 0x80001B0A) {
+  if (rxId == 0x80001B73) {
     char receivedByte[4], *p;
     sprintf(receivedByte, "%02X%02X", rxBuf[4], rxBuf[5]);
     inpVoltage = hex2int(receivedByte) * 0.1;
   }
 
-  // print_raw_can_data()  // uncomment to see raw can messages
+  //print_raw_can_data();  // uncomment to see raw can messages
 }
 
 void CAN::print_raw_can_data() {
