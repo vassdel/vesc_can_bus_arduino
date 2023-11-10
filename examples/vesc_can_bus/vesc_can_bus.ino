@@ -3,7 +3,7 @@
 
 CAN can;             // get torque sensor data, throttle for now
 
-bool print_realtime_data;
+bool print_realtime_data=false;
 long last_print_data;
 
 
@@ -24,13 +24,13 @@ void loop()
     {
         if (millis() - last_print_data > 200)
         {
-            Serial.print(can.erpm); 
-            Serial.print(can.inpVoltage);
-            Serial.print(can.dutyCycleNow);
-            Serial.print(can.avgInputCurrent);
-            Serial.print(can.avgMotorCurrent);
-            Serial.print(can.tempFET);
-            Serial.print(can.tempMotor);
+            Serial.println(can.erpm); 
+            Serial.println(can.inpVoltage);
+            Serial.println(can.dutyCycleNow);
+            Serial.println(can.avgInputCurrent);
+            Serial.println(can.avgMotorCurrent);
+            Serial.println(can.tempFET);
+            Serial.println(can.tempMotor);
 
             last_print_data = millis();
         }

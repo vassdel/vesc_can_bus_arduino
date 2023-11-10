@@ -13,7 +13,7 @@ void CAN::initialize() {
 void CAN::spin() {
   get_frame();
 
-  if (rxId == 0x8000090A) { //
+  if (rxId == 0x80000E73) { //
     dutyCycleNow = process_data_frame_vesc('D', rxBuf[6], rxBuf[7]);
     avgMotorCurrent = process_data_frame_vesc('C', rxBuf[4], rxBuf[5]);
     unsigned char erpmvals[4];
@@ -25,7 +25,7 @@ void CAN::spin() {
 
     //need to add in the rpm conversion function for 4 byte values
   }
-  if (rxId == 0x80000F0A) {
+  if (rxId == 0x80000F73) {
     unsigned char WHvals[4];
     WHvals[0] = rxBuf[3];
     WHvals[1] = rxBuf[2];
@@ -44,7 +44,7 @@ void CAN::spin() {
     inpVoltage = hex2int(receivedByte) * 0.1;
   }
 
-  //print_raw_can_data();  // uncomment to see raw can messages
+  print_raw_can_data();  // uncomment to see raw can messages
 }
 
 void CAN::print_raw_can_data() {
