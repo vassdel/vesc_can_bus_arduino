@@ -11,7 +11,6 @@ void setup()
 {    
     Serial.begin(115200); // Wired comms from USB port
     can.initialize();
-
 }
 
 void loop()
@@ -24,13 +23,20 @@ void loop()
     {
         if (millis() - last_print_data > 200)
         {
-            Serial.print(can.erpm); 
+            Serial.print(can.erpm);
+            Serial.print(" "); 
             Serial.print(can.inpVoltage);
+            Serial.print(" ");
             Serial.print(can.dutyCycleNow);
+            Serial.print(" ");
             Serial.print(can.avgInputCurrent);
+            Serial.print(" ");
             Serial.print(can.avgMotorCurrent);
+            Serial.print(" ");
             Serial.print(can.tempFET);
+            Serial.print(" ");
             Serial.print(can.tempMotor);
+            Serial.println();
 
             last_print_data = millis();
         }
