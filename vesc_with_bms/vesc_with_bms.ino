@@ -48,4 +48,5 @@ void loop() {
     Serial.print(avgtemp);
   }
   Serial.println();
+  delay(100);
 }
