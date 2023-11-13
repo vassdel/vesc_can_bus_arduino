@@ -3,8 +3,6 @@
 
 MCP2515 mcp2515(10); //στον περσινό κώδικα ηταν στο 4 ΠΡΟΣΟΧΗ!
 
-bool rtcstate = false;
-
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
