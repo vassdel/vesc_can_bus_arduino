@@ -2,7 +2,6 @@
 #include <mcp2515.h>
 
 
-
 MCP2515 mcp2515(10);
 
 
@@ -40,7 +39,21 @@ void loop() {
     int64_t inVolt = ((int64_t)canMsg.data[4] << 8) | ((int64_t)canMsg.data[5]);
     Serial.print((int32_t)inVolt*0.1);
     Serial.print(" ");
-
+    //for (int i=0; i<100; i++){
+    while (canMsg.can_id != 0x80001073){
+    /*
+    for (int i = 0; i<canMsg.can_dlc; i++)  {  // print the data
+      Serial.print(canMsg.data[i],HEX);
+      Serial.print(" ");
+    }
+    */
+    mcp2515.readMessage(&canMsg);
+    //Serial.println(canMsg.can_id, HEX); // print ID
+    } 
+    int64_t tempMosfet = ((int64_t)canMsg.data[0] << 8) | ((int64_t)canMsg.data[1]);
+    Serial.print((int32_t)tempMosfet*0.1);
+    Serial.print(" ");
+    //}
     Serial.println();
     delay(100);      
   }
