@@ -1,9 +1,10 @@
 #include <mcp_can.h>
 #include "vesc_can_bus_arduino.h"
+#include "vesc_can_bus_arduino.cpp"
 
 CAN can;             // get torque sensor data, throttle for now
 
-bool print_realtime_data;
+bool print_realtime_data=false;
 long last_print_data;
 
 
