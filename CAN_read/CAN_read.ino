@@ -3,11 +3,11 @@
 
 MCP2515 mcp2515(10);  // chip select pin: 10
 
-bool is_found[7]; // is_found[i] = false,  means that we do not have captured the info about what i indicates
-double data[11]; // data[i] contains the double data for the info about what i indicates
+bool is_found[7];     // is_found[i] = false,  means that we do not have captured the info about what i indicates
+double data[11];      // data[i] contains the double data for the info about what i indicates
 
 
-int index(canid_t x){       // mapping of HEX codes to int indexes for the arrays
+int index(canid_t x){             // mapping of HEX codes to int indexes for the arrays
   if (x == 0x6B0) return  0;
   if (x == 0x80001B73) return  5; // Tachometer, inputVolt
   if (x == 0x80001073) return  4; // tempMosfet, tempMotor, inputCurrent, (pid)
@@ -62,7 +62,7 @@ void convert(int index_info, __u8 canMsgdata[]){  // converts canMsgdata to fina
         break;
       case 5:
         inVolt = ((int64_t)canMsgdata[4] << 8) | ((int64_t)canMsgdata[5]);
-        data[10] = (int32_t)inVolt * 0.1; // 
+        data[10] = (int32_t)inVolt * 0.1;       // check 
         break;
   }
     //int64_t x = ((int64_t)canMsgdata[0] << 32 |(int64_t)canMsgdata[1] << 16 |(int64_t)canMsgdata[2] << 8 | (int64_t)canMsgdata[3]);
@@ -102,7 +102,7 @@ void check_all_data(){ // if we have all the data (7 info) for this short time i
   }
   for(int i = 1; i<7; i++){ // new time season everything is unknown
     is_found[i]=false;
-    Serial.print(i);   
+    //Serial.print(i);      // uncomment to check if everything initialized
   }
   Serial.println();
 
