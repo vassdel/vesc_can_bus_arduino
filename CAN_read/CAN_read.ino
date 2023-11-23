@@ -1,7 +1,7 @@
 #include <SPI.h>
 #include <mcp2515.h>
 
-MCP2515 mcp2515(10);  // chip select pin: 10
+MCP2515 mcp2515(10);  // chip select pin: 10 -> 4 on pcb
 
 bool is_found[7];     // is_found[i] = false,  means that we do not have captured the info about what i indicates
 double data[11];      // data[i] contains the double data for the info about what i indicates
@@ -64,10 +64,11 @@ void convert(int index_info, __u8 canMsgdata[]){  // converts canMsgdata to fina
         inVolt = ((int64_t)canMsgdata[4] << 8) | ((int64_t)canMsgdata[5]);
         data[10] = (int32_t)inVolt * 0.1;       // check 
         break;
+      /*missing case 0: for BMS*/
   }
     //int64_t x = ((int64_t)canMsgdata[0] << 32 |(int64_t)canMsgdata[1] << 16 |(int64_t)canMsgdata[2] << 8 | (int64_t)canMsgdata[3]);
-    int64_t x = ((int64_t)canMsgdata[4] << 8 | (int64_t)canMsgdata[5]);
-    data[index_info] = x; //(int32_t)tempMosfet * 0.1;
+    int64_t x = ((int64_t)canMsgdata[4] << 8 | (int64_t)canMsgdata[5]); // for testing
+    data[index_info] = x; // for testing
 }
 
 // *** BMS - BATTERY INFO ***
@@ -122,7 +123,6 @@ void setup() {
 
   for(int i = 0; i<7; i++){
     is_found[i]=false;
-    
   }
   
 }
@@ -174,14 +174,15 @@ void loop() {
       Serial.println(canMsg.can_id, HEX);
     }*/
 
+
     int index_info = index(canMsg.can_id);
     /*Serial.print("Index  is: "); 
     Serial.print(index_info);
     Serial.print("   ");
     for (int i=0; i<8; i++) { Serial.print(canMsg.data[i]); Serial.print(" ");}
     Serial.println(); */
-    if (index_info != -1) {     // if index is valid (the can_id is one of the HEX numbers declared in function `int index()` )
-      is_found[index_info] = true; // indicate that you found info indexed with (i)
+    if (index_info != -1) {               // if index is valid (the can_id is one of the HEX numbers declared in function `int index()` )
+      is_found[index_info] = true;        // indicate that you found info indexed with (i)
       convert(index_info, canMsg.data);   // convert canMsg.data to final double form and save it in data[index_info]
       check_all_data();                   // checks if we have gathered all data for this short period of time
     }
