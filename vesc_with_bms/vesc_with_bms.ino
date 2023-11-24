@@ -4,7 +4,6 @@
 MCP2515 mcp2515(10); //στον περσινό κώδικα ηταν στο 4 ΠΡΟΣΟΧΗ!
 
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(115200);
   
   mcp2515.reset();
@@ -18,7 +17,6 @@ void setup() {
 struct can_frame canMsg;
 
 void loop() {
-  // put your main code here, to run repeatedly:
   if (mcp2515.readMessage(&canMsg) == MCP2515::ERROR_OK) {
     while (canMsg.can_id != 0x80001B73){
       mcp2515.readMessage(&canMsg);
@@ -32,7 +30,7 @@ void loop() {
     int64_t tempMosfet = ((int64_t)canMsg.data[0] << 8) | ((int64_t)canMsg.data[1]);
     Serial.print((int32_t)tempMosfet*0.1);
     Serial.print("#");
-    while (canMsg.can_id != 0x6B0){
+    while (canMsg.can_id != 0x6B0){ //???? is the id right?
       mcp2515.readMessage(&canMsg);
     }
     int64_t ampHour = ((int64_t)canMsg.data[0] << 8) | ((int64_t)canMsg.data[1]);
