@@ -1,0 +1,188 @@
+#:kivy 1.11.0
+<MyRootLayout>:
+    orientation: 'horizontal'
+
+    LeftLayout:
+        id: lftl
+
+    MiddleLayout:
+        id: mdll
+
+    RightLayout:
+        id: rgtl
+
+<LeftLayout>:
+    Button:
+		id: btn1
+		text: root.val1 +root.unit1
+		font_size: 40
+		backround_color: (1,1,1,1)
+        #size_hint: .18, 1
+        #pos: 0,0
+		canvas:
+			Color:
+				rgba: 1,0,0,0.7
+				#rgba: 1,0.5,0,.7
+			Line:
+				circle:(self.center_x, self.center_y, 90, -150, 150)
+				width: 15
+				cap: 'round'
+			Color:
+				rgba: 0,0.8,0.1,1
+			Line:
+				circle:(self.center_x, self.center_y, 90, -150, root.num1)
+				width: 15
+				cap: 'round'
+
+    Button:
+		id: btn2
+		text: "Autonomy\n" + root.val2
+		halign: "center"
+		valign: "middle"
+		font_size: 40
+        #size_hint: .18, 1
+        #pos: 1,0
+
+    Button:
+		id: btn3
+		text: root.val3 +root.unit3
+		font_size: 40
+        #size_hint: .18, 1
+        #pos: 1,1
+		canvas:
+			Color:
+				rgba: 1,1,1,.7
+			Line:
+				circle:(self.center_x, self.center_y, 90, -150, 150)
+				width: 15
+				cap: 'round'
+			Color:
+				rgba: 1,0,0,1
+			Line:
+				circle:(self.center_x, self.center_y, 90, -150, root.num3)
+				width: 15
+				cap: 'round'
+
+    Button:
+		id: btn4
+		text: root.val4 +root.unit4
+		font_size: 40
+        #size_hint: .18, 1.0
+        #pos: 2,2
+		canvas:
+			Color:
+				rgba: 0,0,1,.7
+			Line:
+				circle:(self.center_x, self.center_y, 90, -150, 150)
+				width: 15
+				cap: 'round'
+			Color:
+				rgba: 1,1,0,1
+			Line:
+				circle:(self.center_x, self.center_y, 90, -150, root.num4)
+				width: 15
+				cap: 'round'
+
+<MiddleLayout>:
+    orientation: 'vertical'
+
+    Button:
+		id: btn5
+		text: root.val5 +root.unit5
+		font_size: 40
+        size_hint: 1,.25
+		canvas:
+			Color:
+				rgba: 1,1,1,.7
+			Line:
+				circle:(self.center_x, self.center_y, 80, -150, 150)
+				width: 15
+				cap: 'round'
+			Color:
+				rgba: 1,0.5,0,1
+			Line:
+				circle:(self.center_x, self.center_y, 80, -150, root.num5)
+				width: 15
+				cap: 'round'
+
+    Button:
+		id: btn6
+		text: root.val6 +root.unit6
+		font_size: 40
+        size_hint: 1,.25
+
+    Button:
+		id: btn7
+		text: root.val7 +root.unit7
+		font_size: 40
+        size_hint: 1,.1
+
+<RightLayout>:
+
+    Button:
+		id: btn8
+		text: root.val8 +root.unit8
+		font_size: 40
+        #size_hint: .18, 1
+        #pos: 1,0
+
+    Button:
+		id: btn9
+		text: root.val9 +root.unit9
+		font_size: 40
+		backround_color: (1,1,1,1)
+        #pos: 2,2
+		canvas:
+			Color:
+				rgba: 1,1,1,.7
+			Line:
+				circle:(self.center_x, self.center_y, 90, -150, 150)
+				width: 15
+				cap: 'round'
+			Color:
+				rgba: 1,0,0,1
+			Line:
+				circle:(self.center_x, self.center_y, 90, -150, root.num9)
+				width: 15
+				cap: 'round'
+
+    Button:
+		id: btn10
+		text: root.val10 +root.unit10
+		font_size: 40
+        #size_hint: .18, 1
+        #pos: 1,1
+		canvas:
+			Color:
+				rgba: 0,0,1,.7
+			Line:
+				circle:(self.center_x, self.center_y, 90, -150, 150)
+				width: 15
+				cap: 'round'
+			Color:
+				rgba: 1,1,0,1
+			Line:
+				circle:(self.center_x, self.center_y, 90, -150, root.num10)
+				width: 15
+				cap: 'round'
+
+
+    Button:
+		id: btn11
+		text: root.val11 +root.unit11
+		font_size: 40
+        #size_hint: .18, 1.0
+        #pos: 2,2
+		canvas:
+			Color:
+				rgba: 1,1,1,.7
+			Line:
+				circle:(self.center_x, self.center_y, 90, -150, 150)
+				width: 15
+				cap: 'round'
+			Color:
+				rgba: 1,0,0,1
+			Line:
+				circle:(self.center_x, self.center_y, 90, -150, root.num11)
+				width: 15
+				cap: 'round'
