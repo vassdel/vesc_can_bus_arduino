@@ -1,7 +1,7 @@
 #include <SPI.h>
 #include <mcp2515.h>
 
-MCP2515 mcp2515(10);  // chip select pin: 10
+MCP2515 mcp2515(4);  // chip select pin: 10
 
 bool is_found[7]; // is_found[i] = false,  means that we do not have captured the info about what i indicates
 double data[15]; // data[i] contains the double data for the info about what i indicates
@@ -125,7 +125,7 @@ void setup() {
   Serial.begin(115200);
 
   mcp2515.reset();
-  mcp2515.setBitrate(CAN_250KBPS, MCP_8MHZ);  // canSpeed = CAN_500KBPS
+  mcp2515.setBitrate(CAN_500KBPS, MCP_8MHZ);  // canSpeed = CAN_500KBPS
   mcp2515.setNormalMode();
 
   Serial.println("------- CAN Read ----------");
