@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=Serial
+Exec=/usr/bin/python3 /home/oceanos/restart_gps.py
