@@ -10,9 +10,10 @@ def send_messages(server_socket):
         # 8ewroume mia ka8ysterhsh, an den mas aresei thn allazoyme
         time.sleep(0.5)
         # diabazw to arxeio
-        data = pd.read_csv('data.csv')
+        data = pd.read_csv('localdata.csv')
         # ftiaxnw dianysma me tis times apo thn teleytaia seira tou arxeiou
         data1 = np.array(data.iloc[-1].values)
+        print(str(data1.size)+"---------------------------------------------------")
         # bazw se ka8e metablhth thn antistoixh timh apo to panw dianusma se morfh str gia na emfanizetai sthn o8onh swsta
         current_time = str(data1[0])
         lat = str(data1[1])
