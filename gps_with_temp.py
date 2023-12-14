@@ -11,11 +11,15 @@ from math import sin, cos, sqrt, atan2, radians
 import RPi.GPIO as GPIO
 import os 
 
+# rename the localdata and save it to another folder (history)
 try:
     old_fn = 'data.csv'
     new_fn = 'data_'+str(date.today())+'_'+str(datetime.now().strftime("%H-%M-%S"))+'.csv'
+    # for macbook vassdel
     #os.rename('/Users/vassdel/Documents/Raspberry/Oceanos/'+old_fn,'/Users/vassdel/Documents/Raspberry/Oceanos/data_history/'+new_fn) #pc
-    os.rename('/home/oceanos/'+old_fn,'/home/oceanos/history/'+new_fn)
+
+    # change according to directory of your files
+    os.rename('/home/oceanos/'+old_fn,'/home/oceanos/history/'+new_fn) 
 except:
     pass
 
