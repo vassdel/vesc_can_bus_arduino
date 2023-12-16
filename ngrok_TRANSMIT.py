@@ -13,7 +13,7 @@ def send_messages(server_socket):
         data = pd.read_csv('data.csv')
         # ftiaxnw dianysma me tis times apo thn teleytaia seira tou arxeiou
         data1 = np.array(data.iloc[-1].values)
-        print(str(data1.size)+"---------------------------------------------------")
+        #print(str(data1.size)+"---------------------------------------------------")
         # bazw se ka8e metablhth thn antistoixh timh apo to panw dianusma se morfh str gia na emfanizetai sthn o8onh swsta
         current_time = str(data1[0])
         lat = str(data1[1])
